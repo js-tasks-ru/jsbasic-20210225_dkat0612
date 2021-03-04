@@ -1,8 +1,5 @@
 function ucFirst(str) {
-  if(str == null)
+  if(!str)
     return "";
-  let firstUCLetter = str.slice(0, 1).toUpperCase();
-  if(str.length == 1) 
-    return firstUCLetter;
-  return firstUCLetter + str.slice(1);
+  return str[0].toUpperCase() + str.slice(1);
 }
