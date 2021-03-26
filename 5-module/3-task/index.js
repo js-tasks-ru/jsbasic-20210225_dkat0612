@@ -9,22 +9,28 @@ function initCarousel() {
   leftButton.style.display = 'none';
 
   rightButton.addEventListener('click', () => {
-    carouselInner.style.transform = 'translateX(-' + innerWidth *  ++currentSlide + 'px)';
-    if(currentSlide === SLIDE_COUNT - 1){
-      rightButton.style.display = 'none';
-    }else {
-      rightButton.style.display = '';
-      leftButton.style.display = '';
-    }
+    carouselInner.style.transform = next(innerWidth, ++currentSlide);
+    update(currentSlide, rightButton, leftButton);
   });
 
   leftButton.addEventListener('click', () => {
-    carouselInner.style.transform = 'translateX(-' + innerWidth *  --currentSlide + 'px)';
-    if(currentSlide === 0){
-      leftButton.style.display = 'none';
-    }else{
-      rightButton.style.display = '';
-      leftButton.style.display = '';
-    }
+    carouselInner.style.transform = next(innerWidth, --currentSlide);
+    update(currentSlide, rightButton, leftButton);
   });
 }
+
+function next(innerWidth, currentSlide){
+  return `translateX(-${innerWidth *  currentSlide}px)`;
+}
+
+function update(currentSlide, rightButton, leftButton){
+  if(currentSlide === SLIDE_COUNT - 1){
+    rightButton.style.display = 'none';
+  }else if(currentSlide === 0){
+    leftButton.style.display = 'none';
+  }else {
+    rightButton.style.style = '';
+    leftButton.style.display = '';
+  }
+}
+
