@@ -29,7 +29,7 @@ function update(currentSlide, rightButton, leftButton){
   }else if(currentSlide === 0){
     leftButton.style.display = 'none';
   }else {
-    rightButton.style.style = '';
+    rightButton.style.display = '';
     leftButton.style.display = '';
   }
 }
