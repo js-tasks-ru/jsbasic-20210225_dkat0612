@@ -46,7 +46,7 @@ export default class UserTable {
       }
       
       row.remove();
-    })
+    });
   }
   get elem() {
     return this._elem;
