@@ -25,7 +25,7 @@ export default class ProductCard {
     this._elem.insertAdjacentHTML("afterbegin", cardBodyTemplate(this._product));
     this._elem.insertAdjacentHTML("afterbegin", cardTopTemplate(this._product));
     const buttonAdd = this._elem.querySelector('button');
-    buttonAdd.addEventListener('click', this._onButtonClick)
+    buttonAdd.addEventListener('click', this._onButtonClick);
   }
 
   _onButtonClick = () => {
