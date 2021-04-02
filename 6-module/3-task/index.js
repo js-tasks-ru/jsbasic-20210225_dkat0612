@@ -37,11 +37,13 @@ export default class Carousel {
   constructor(slides) {
     this.slides = slides;
     this._slidesCount = this.slides.length;
-    this._elem = document.createElement('div');
-    this._elem.classList.add('carousel');
-    this._elem.insertAdjacentHTML('afterbegin', carouselArrowLTemplate());
-    this._elem.insertAdjacentHTML('afterbegin', carouselArrowRTemplate());
-    this._elem.insertAdjacentHTML('beforeend', innerCarouselTemplate(this.slides));
+    this._elem = createElement(
+      `<div class="carousel">
+      ${carouselArrowRTemplate()}
+      ${carouselArrowLTemplate()}
+      ${innerCarouselTemplate(this.slides)}
+      </div>`
+    );
     this._initCarousel();
     this._elem.querySelectorAll('.carousel__button')
               .forEach(button => { 

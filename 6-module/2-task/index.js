@@ -11,7 +11,7 @@ function cardBodyTemplate(product) {
   return `
   <div class="card__body">
   <div class="card__title">${product.name}</div>
-  <button type="button" class="card__button">
+  <button type="button" class="card__button js-button">
       <img src="/assets/images/icons/plus-icon.svg" alt="icon">
   </button>
 </div>`;
@@ -20,11 +20,13 @@ function cardBodyTemplate(product) {
 export default class ProductCard {
   constructor(product) {
     this._product = product;
-    this._elem = document.createElement('div');
-    this._elem.classList.add('card');
-    this._elem.insertAdjacentHTML("afterbegin", cardBodyTemplate(this._product));
-    this._elem.insertAdjacentHTML("afterbegin", cardTopTemplate(this._product));
-    const buttonAdd = this._elem.querySelector('button');
+    this._elem = createElement(
+      `<div class="card">
+        ${cardTopTemplate(this._product)}
+        ${cardBodyTemplate(this._product)}
+      </div>`
+    );
+    const buttonAdd = this._elem.querySelector('.js-button');
     buttonAdd.addEventListener('click', this._onButtonClick);
   }
 

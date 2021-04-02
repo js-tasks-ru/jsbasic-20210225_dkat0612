@@ -35,8 +35,14 @@ export default class UserTable {
   constructor(rows) {
     this._elem = document.createElement('Table');
     this._elem.insertAdjacentHTML("afterbegin", tbodyTemplate(rows));
-    this._elem.addEventListener('click', (event) => {
-      const target = event.target;
+    this._elem.addEventListener('click', event => this._onClick(event));
+  }
+  get elem() {
+    return this._elem;
+  }
+
+  _onClick = (event) =>{
+    const target = event.target;
       if (target.dataset.action !== 'remove') {
         return;
       }
@@ -46,9 +52,5 @@ export default class UserTable {
       }
       
       row.remove();
-    });
-  }
-  get elem() {
-    return this._elem;
   }
 }
