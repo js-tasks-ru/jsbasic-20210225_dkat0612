@@ -24,15 +24,17 @@ export default class Modal {
     this._elem.querySelector('.modal__close').addEventListener('click', () => {
         this._removeModal();
     });
-    document.addEventListener('keydown', (event) => {
-      if(event.code === 'Escape'){
-        this._removeModal();
-      }
-    });
+    document.addEventListener('keydown', (event) => this._onKeyDown(event));
   }
 
   get elem() {
     return this._elem;
+  }
+
+  _onKeyDown = (event) => {
+    if(event.code === 'Escape'){
+      this._removeModal();
+    }
   }
 
   open(){
@@ -57,5 +59,6 @@ export default class Modal {
   _removeModal(){
     document.body.classList.remove('is-modal-open');
     this._elem.remove();
+    document.removeEventListener('keydown', this._onKeyDown);
   }
 }
